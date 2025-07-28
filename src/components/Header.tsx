@@ -1,12 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Search, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useCart } from '@/hooks/useCart';
+import { useState } from 'react';
 
 const Header = () => {
   const location = useLocation();
   const { getTotalItems } = useCart();
   const totalItems = getTotalItems();
+  const [isOpen, setIsOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -66,9 +69,53 @@ const Header = () => {
               )}
             </Button>
           </Link>
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <Menu className="h-4 w-4" />
-          </Button>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col space-y-4 mt-8">
+                <Link
+                  to="/"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg font-medium transition-colors hover:text-wood ${
+                    isActive('/') ? 'text-wood' : 'text-muted-foreground'
+                  }`}
+                >
+                  Главная
+                </Link>
+                <Link
+                  to="/catalog"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg font-medium transition-colors hover:text-wood ${
+                    isActive('/catalog') ? 'text-wood' : 'text-muted-foreground'
+                  }`}
+                >
+                  Каталог
+                </Link>
+                <Link
+                  to="/about"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg font-medium transition-colors hover:text-wood ${
+                    isActive('/about') ? 'text-wood' : 'text-muted-foreground'
+                  }`}
+                >
+                  О нас
+                </Link>
+                <Link
+                  to="/delivery"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg font-medium transition-colors hover:text-wood ${
+                    isActive('/delivery') ? 'text-wood' : 'text-muted-foreground'
+                  }`}
+                >
+                  Доставка
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>

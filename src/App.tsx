@@ -20,7 +20,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/chic-furnish-studio">
         <div className="min-h-screen bg-background flex flex-col">
           <Header />
           <main className="flex-1">

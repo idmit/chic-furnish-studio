@@ -2,6 +2,11 @@ import { Product, Category } from '@/types/furniture';
 import chairImage from '@/assets/chair-modern.jpg';
 import tableImage from '@/assets/table-dining.jpg';
 import bookshelfImage from '@/assets/bookshelf-modern.jpg';
+import sofaImage from '@/assets/sofa-modern.jpg';
+import coffeeTableImage from '@/assets/coffee-table.jpg';
+import wardrobeImage from '@/assets/wardrobe-modern.jpg';
+import deskImage from '@/assets/desk-wooden.jpg';
+import bedImage from '@/assets/bed-modern.jpg';
 
 export const categories: Category[] = [
   {
@@ -21,6 +26,24 @@ export const categories: Category[] = [
     name: 'Стеллажи',
     slug: 'shelving',
     image: bookshelfImage,
+  },
+  {
+    id: '4',
+    name: 'Диваны и кресла',
+    slug: 'sofas',
+    image: sofaImage,
+  },
+  {
+    id: '5',
+    name: 'Шкафы',
+    slug: 'wardrobes',
+    image: wardrobeImage,
+  },
+  {
+    id: '6',
+    name: 'Кровати',
+    slug: 'beds',
+    image: bedImage,
   },
 ];
 
@@ -83,5 +106,101 @@ export const products: Product[] = [
     inStock: true,
     rating: 4.7,
     reviews: 156,
+  },
+  {
+    id: '4',
+    name: 'Диван Комфорт',
+    price: 89900,
+    originalPrice: 109900,
+    image: sofaImage,
+    category: 'sofas',
+    description: 'Удобный трёхместный диван с мягкими подушками. Идеальное решение для гостиной в скандинавском стиле.',
+    specifications: {
+      'Материал каркаса': 'Массив сосны',
+      'Обивка': 'Рогожка',
+      'Длина': '220 см',
+      'Ширина': '95 см',
+      'Высота': '85 см',
+      'Количество мест': '3',
+    },
+    inStock: true,
+    rating: 4.6,
+    reviews: 203,
+  },
+  {
+    id: '5',
+    name: 'Кофейный Столик Круг',
+    price: 19900,
+    image: coffeeTableImage,
+    category: 'tables',
+    description: 'Стильный круглый кофейный столик из натурального дуба. Компактный и функциональный.',
+    specifications: {
+      'Материал': 'Натуральный дуб',
+      'Диаметр': '80 см',
+      'Высота': '45 см',
+      'Вес': '12 кг',
+      'Форма': 'Круглая',
+    },
+    inStock: true,
+    rating: 4.5,
+    reviews: 78,
+  },
+  {
+    id: '6',
+    name: 'Шкаф-Купе Модерн',
+    price: 79900,
+    image: wardrobeImage,
+    category: 'wardrobes',
+    description: 'Просторный шкаф-купе с зеркальными дверцами. Внутри предусмотрены полки и штанги для одежды.',
+    specifications: {
+      'Материал': 'ЛДСП, зеркало',
+      'Ширина': '220 см',
+      'Глубина': '60 см',
+      'Высота': '240 см',
+      'Количество дверей': '3',
+      'Внутреннее наполнение': 'Полки и штанги',
+    },
+    inStock: true,
+    rating: 4.8,
+    reviews: 134,
+  },
+  {
+    id: '7',
+    name: 'Рабочий Стол Офис',
+    price: 35900,
+    image: deskImage,
+    category: 'tables',
+    description: 'Функциональный письменный стол с выдвижными ящиками. Идеален для домашнего офиса.',
+    specifications: {
+      'Материал': 'Натуральный дуб',
+      'Длина': '140 см',
+      'Ширина': '70 см',
+      'Высота': '75 см',
+      'Количество ящиков': '3',
+      'Вес': '28 кг',
+    },
+    inStock: true,
+    rating: 4.7,
+    reviews: 92,
+  },
+  {
+    id: '8',
+    name: 'Кровать Скандинавия',
+    price: 65900,
+    originalPrice: 75900,
+    image: bedImage,
+    category: 'beds',
+    description: 'Двуспальная кровать из массива дуба с изголовьем. Прочная конструкция и элегантный дизайн.',
+    specifications: {
+      'Материал': 'Массив дуба',
+      'Размер спального места': '160х200 см',
+      'Высота изголовья': '120 см',
+      'Общая длина': '210 см',
+      'Общая ширина': '170 см',
+      'Максимальная нагрузка': '200 кг',
+    },
+    inStock: true,
+    rating: 4.9,
+    reviews: 167,
   },
 ];

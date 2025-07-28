@@ -40,6 +40,9 @@ const Footer = () => {
               <Link to="/about" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
                 О нас
               </Link>
+              <Link to="/delivery" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
+                Доставка и оплата
+              </Link>
               <Link to="/cart" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
                 Корзина
               </Link>
@@ -58,6 +61,15 @@ const Footer = () => {
               </Link>
               <Link to="/catalog?category=shelving" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
                 Стеллажи
+              </Link>
+              <Link to="/catalog?category=sofas" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
+                Диваны и кресла
+              </Link>
+              <Link to="/catalog?category=wardrobes" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
+                Шкафы
+              </Link>
+              <Link to="/catalog?category=beds" className="block text-muted-foreground hover:text-wood transition-colors text-sm">
+                Кровати
               </Link>
             </nav>
           </div>

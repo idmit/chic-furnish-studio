@@ -42,6 +42,14 @@ const Header = () => {
           >
             О нас
           </Link>
+          <Link
+            to="/delivery"
+            className={`text-sm font-medium transition-colors hover:text-wood ${
+              isActive('/delivery') ? 'text-wood' : 'text-muted-foreground'
+            }`}
+          >
+            Доставка
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">

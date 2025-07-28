@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Custom furniture site colors
+				wood: {
+					DEFAULT: 'hsl(var(--warm-wood))',
+					dark: 'hsl(var(--warm-wood-dark))'
+				},
+				cream: 'hsl(var(--neutral-cream))',
+				stone: 'hsl(var(--neutral-stone))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

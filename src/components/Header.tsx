@@ -1,0 +1,70 @@
+import { Link, useLocation } from 'react-router-dom';
+import { ShoppingCart, Search, Menu } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useCart } from '@/hooks/useCart';
+
+const Header = () => {
+  const location = useLocation();
+  const { getTotalItems } = useCart();
+  const totalItems = getTotalItems();
+
+  const isActive = (path: string) => location.pathname === path;
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
+        <Link to="/" className="flex items-center space-x-2">
+          <div className="font-bold text-xl tracking-tight">МЕБЕЛЬ</div>
+        </Link>
+
+        <nav className="hidden md:flex items-center space-x-8">
+          <Link
+            to="/"
+            className={`text-sm font-medium transition-colors hover:text-wood ${
+              isActive('/') ? 'text-wood' : 'text-muted-foreground'
+            }`}
+          >
+            Главная
+          </Link>
+          <Link
+            to="/catalog"
+            className={`text-sm font-medium transition-colors hover:text-wood ${
+              isActive('/catalog') ? 'text-wood' : 'text-muted-foreground'
+            }`}
+          >
+            Каталог
+          </Link>
+          <Link
+            to="/about"
+            className={`text-sm font-medium transition-colors hover:text-wood ${
+              isActive('/about') ? 'text-wood' : 'text-muted-foreground'
+            }`}
+          >
+            О нас
+          </Link>
+        </nav>
+
+        <div className="flex items-center space-x-4">
+          <Button variant="ghost" size="icon">
+            <Search className="h-4 w-4" />
+          </Button>
+          <Link to="/cart">
+            <Button variant="ghost" size="icon" className="relative">
+              <ShoppingCart className="h-4 w-4" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-wood text-xs text-white flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </Button>
+          </Link>
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

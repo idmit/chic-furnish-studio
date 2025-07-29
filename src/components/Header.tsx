@@ -46,6 +46,14 @@ const Header = () => {
             О нас
           </Link>
           <Link
+            to="/blog"
+            className={`text-sm font-medium transition-colors hover:text-wood ${
+              isActive('/blog') ? 'text-wood' : 'text-muted-foreground'
+            }`}
+          >
+            Блог
+          </Link>
+          <Link
             to="/delivery"
             className={`text-sm font-medium transition-colors hover:text-wood ${
               isActive('/delivery') ? 'text-wood' : 'text-muted-foreground'
@@ -103,6 +111,15 @@ const Header = () => {
                   }`}
                 >
                   О нас
+                </Link>
+                <Link
+                  to="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg font-medium transition-colors hover:text-wood ${
+                    isActive('/blog') ? 'text-wood' : 'text-muted-foreground'
+                  }`}
+                >
+                  Блог
                 </Link>
                 <Link
                   to="/delivery"

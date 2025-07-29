@@ -5,6 +5,9 @@ import { CheckCircle, Truck, Shield, Headphones, Star, ArrowRight } from "lucide
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-furniture.jpg";
 import homeIdeasImage from "@/assets/home-ideas.jpg";
+import chairModern from "@/assets/chair-modern.jpg";
+import sofaModern from "@/assets/sofa-modern.jpg";
+import tableDining from "@/assets/table-dining.jpg";
 import PromoCarousel from "@/components/PromoCarousel";
 import CategoriesGrid from "@/components/CategoriesGrid";
 import FeaturedProducts from "@/components/FeaturedProducts";
@@ -32,17 +35,17 @@ const HomePage = () => {
     {
       title: "Скандинавский стиль",
       description: "Минимализм и функциональность",
-      image: "/src/assets/chair-modern.jpg"
+      image: chairModern
     },
     {
       title: "Современная классика",
       description: "Элегантность и комфорт",
-      image: "/src/assets/sofa-modern.jpg"
+      image: sofaModern
     },
     {
       title: "Лофт интерьер",
       description: "Индустриальный шик",
-      image: "/src/assets/table-dining.jpg"
+      image: tableDining
     }
   ];
 
@@ -75,7 +78,7 @@ const HomePage = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-lg px-8 py-6 border-white text-white hover:bg-white hover:text-primary"
+                className="text-lg px-8 py-6 border-2 border-white/80 text-white bg-white/10 hover:bg-white hover:text-primary backdrop-blur-sm font-semibold shadow-lg"
               >
                 О нас
               </Button>

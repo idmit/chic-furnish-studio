@@ -69,32 +69,53 @@ const PromoCarousel = () => {
         {promoSlides.map((slide) => (
           <div
             key={slide.id}
-            className={`min-w-full h-full relative ${slide.bgColor} flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-16 py-8`}
+            className={`min-w-full h-full relative ${slide.bgColor} flex items-center`}
           >
-            <div className={`flex-1 ${slide.textColor} z-10 text-center md:text-left`}>
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                <Tag className="w-3 h-3 mr-1" />
-                {slide.discount}
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
-                {slide.title}
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90">
-                {slide.subtitle}
-              </p>
-              <Button 
-                size="lg" 
-                className="bg-white text-primary hover:bg-white/90 font-semibold w-full sm:w-auto"
-              >
-                Смотреть товары
-              </Button>
+            {/* Background pattern/decoration */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-10 right-10 w-32 h-32 border border-white/20 rounded-full"></div>
+              <div className="absolute bottom-10 right-20 w-20 h-20 border border-white/20 rounded-full"></div>
+              <div className="absolute top-1/2 right-32 w-16 h-16 border border-white/20 rounded-full"></div>
             </div>
-            <div className="flex-1 relative h-32 sm:h-40 md:h-full w-full md:block mt-4 md:mt-0">
-              <img 
-                src={slide.image} 
-                alt={slide.title}
-                className="absolute inset-0 md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 h-full md:h-80 w-full md:w-auto object-cover rounded-lg shadow-2xl"
-              />
+
+            <div className="container mx-auto px-4 sm:px-8 md:px-16 relative z-10">
+              <div className="grid md:grid-cols-2 gap-8 items-center h-full py-8">
+                {/* Content Side */}
+                <div className={`${slide.textColor} order-2 md:order-1 text-center md:text-left`}>
+                  <Badge className="mb-4 bg-white/20 text-white border-white/30 inline-flex items-center">
+                    <Tag className="w-3 h-3 mr-1" />
+                    {slide.discount}
+                  </Badge>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                    {slide.title}
+                  </h2>
+                  <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-md mx-auto md:mx-0">
+                    {slide.subtitle}
+                  </p>
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-primary hover:bg-white/90 font-semibold w-full sm:w-auto px-8 py-3 text-base md:text-lg shadow-lg hover:shadow-xl transition-all"
+                  >
+                    Смотреть товары
+                  </Button>
+                </div>
+
+                {/* Image Side */}
+                <div className="order-1 md:order-2 flex justify-center md:justify-end">
+                  <div className="relative">
+                    <div className="w-64 h-48 sm:w-80 sm:h-60 md:w-96 md:h-72 lg:w-[420px] lg:h-80 bg-white/10 rounded-2xl backdrop-blur-sm p-4 shadow-2xl">
+                      <img 
+                        src={slide.image} 
+                        alt={slide.title}
+                        className="w-full h-full object-cover rounded-xl shadow-lg"
+                      />
+                    </div>
+                    {/* Floating elements */}
+                    <div className="absolute -top-3 -right-3 w-6 h-6 bg-white/30 rounded-full animate-pulse"></div>
+                    <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-white/20 rounded-full animate-pulse delay-1000"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ))}

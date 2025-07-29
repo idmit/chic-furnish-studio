@@ -6,6 +6,13 @@ import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
 import { toast } from '@/hooks/use-toast';
 
+// Import images
+import sofaModern from '@/assets/sofa-modern.jpg';
+import chairModern from '@/assets/chair-modern.jpg';
+import bedModern from '@/assets/bed-modern.jpg';
+import coffeeTable from '@/assets/coffee-table.jpg';
+import wardrobeModern from '@/assets/wardrobe-modern.jpg';
+
 interface FeaturedProduct {
   id: number;
   name: string;
@@ -24,7 +31,7 @@ const featuredProducts: FeaturedProduct[] = [
     name: "Современный диван",
     price: 89000,
     originalPrice: 120000,
-    image: "/src/assets/sofa-modern.jpg",
+    image: sofaModern,
     rating: 4.8,
     reviews: 124,
     discount: 26
@@ -33,7 +40,7 @@ const featuredProducts: FeaturedProduct[] = [
     id: 2,
     name: "Кресло дизайнерское",
     price: 35000,
-    image: "/src/assets/chair-modern.jpg",
+    image: chairModern,
     rating: 4.9,
     reviews: 89,
     isNew: true
@@ -43,7 +50,7 @@ const featuredProducts: FeaturedProduct[] = [
     name: "Кровать модерн",
     price: 75000,
     originalPrice: 95000,
-    image: "/src/assets/bed-modern.jpg",
+    image: bedModern,
     rating: 4.7,
     reviews: 156,
     discount: 21
@@ -52,7 +59,7 @@ const featuredProducts: FeaturedProduct[] = [
     id: 4,
     name: "Журнальный столик",
     price: 25000,
-    image: "/src/assets/coffee-table.jpg",
+    image: coffeeTable,
     rating: 4.6,
     reviews: 78,
     isNew: true
@@ -62,7 +69,7 @@ const featuredProducts: FeaturedProduct[] = [
     name: "Шкаф современный",
     price: 65000,
     originalPrice: 80000,
-    image: "/src/assets/wardrobe-modern.jpg",
+    image: wardrobeModern,
     rating: 4.8,
     reviews: 92,
     discount: 19
@@ -74,8 +81,27 @@ const FeaturedProducts = () => {
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
   const { addItem } = useCart();
 
-  const itemsPerPage = 4;
+  // Responsive items per page
+  const getItemsPerPage = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 1; // mobile
+      if (window.innerWidth < 1024) return 2; // tablet
+      return 4; // desktop
+    }
+    return 4;
+  };
+
+  const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage());
   const maxIndex = Math.max(0, featuredProducts.length - itemsPerPage);
+
+  // Update items per page on window resize
+  useState(() => {
+    const handleResize = () => setItemsPerPage(getItemsPerPage());
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  });
 
   const next = () => {
     setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
@@ -153,11 +179,17 @@ const FeaturedProducts = () => {
       
       <div className="relative overflow-hidden">
         <div 
-          className="flex transition-transform duration-300 ease-in-out gap-6"
+          className="flex transition-transform duration-300 ease-in-out gap-3 sm:gap-4 md:gap-6"
           style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
         >
           {featuredProducts.map((product) => (
-            <div key={product.id} className="min-w-[calc(25%-18px)] flex-shrink-0">
+            <div key={product.id} className={`${
+              itemsPerPage === 1 
+                ? 'min-w-full' 
+                : itemsPerPage === 2 
+                ? 'min-w-[calc(50%-8px)]' 
+                : 'min-w-[calc(25%-18px)]'
+            } flex-shrink-0`}>
               <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="relative overflow-hidden">
                   <img 
